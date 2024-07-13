@@ -1,6 +1,6 @@
 package com.dziem.asteroidcatcher.service;
 
-import com.dziem.asteroidcatcher.controller.Coordinates;
+import com.dziem.asteroidcatcher.model.Coordinates;
 import com.dziem.asteroidcatcher.model.WeatherResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

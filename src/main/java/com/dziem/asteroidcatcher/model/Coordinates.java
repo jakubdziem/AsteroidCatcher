@@ -1,4 +1,4 @@
-package com.dziem.asteroidcatcher.controller;
+package com.dziem.asteroidcatcher.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

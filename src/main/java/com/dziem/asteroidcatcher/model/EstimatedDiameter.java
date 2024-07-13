@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class EstimatedDiameter {
-    private double estimated_diameter_min;
-    private double estimated_diameter_max;
+    private Kilometers kilometers;
+    private Meters meters;
 }
