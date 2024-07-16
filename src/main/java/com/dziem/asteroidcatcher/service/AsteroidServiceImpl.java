@@ -1,6 +1,7 @@
 package com.dziem.asteroidcatcher.service;
 
 import com.dziem.asteroidcatcher.model.Asteroid;
+import com.dziem.asteroidcatcher.model.Coordinates;
 import com.dziem.asteroidcatcher.model.NasaApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.List;
 public class AsteroidServiceImpl implements AsteroidService {
 
     private final RestTemplate restTemplate;
+    private final WeatherResponseService weatherResponseService;
     @Override
     public List<Asteroid> getAsteroids() {
         LocalDateTime localDateTime = LocalDateTime.now();

@@ -5,6 +5,9 @@ import com.dziem.asteroidcatcher.model.Coordinates;
 
 import java.util.List;
 
-public interface AsteroidService {
-    List<Asteroid> getAsteroids();
+public interface MainService {
+    List<Asteroid> getVisibleAsteroidsForCity(String city);
+    List<Asteroid> getVisibleAsteroidsForCoordinates(Coordinates coordinates);
+
+
 }

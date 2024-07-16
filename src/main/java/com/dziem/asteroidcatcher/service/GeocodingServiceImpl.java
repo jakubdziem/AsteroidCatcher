@@ -25,7 +25,6 @@ public class GeocodingServiceImpl implements GeocodingService {
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
         ResponseEntity<CityInformation[]> exchange = restTemplate.exchange(url, HttpMethod.GET, requestEntity, CityInformation[].class);
         CityInformation[] response = exchange.getBody();
-
         CityInformation cityInformation = response[0];
         return new Coordinates(String.valueOf(cityInformation.getLongitude()), String.valueOf(cityInformation.getLatitude()));
     }
