@@ -37,6 +37,7 @@ public class MainServiceImpl implements MainService {
         List<Asteroid> mediumTelescope = new ArrayList<>();
 
         if(cloudCover > 80) {
+            visibleAsteroids.put("There are too many clouds: cloudCover="+cloudCover, null);
             return visibleAsteroids;
         }
         for (Asteroid asteroid: asteroids) {

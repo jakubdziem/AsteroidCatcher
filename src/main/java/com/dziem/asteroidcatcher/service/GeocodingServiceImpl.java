@@ -18,7 +18,7 @@ public class GeocodingServiceImpl implements GeocodingService {
 
     @Override
     public Coordinates getCoordinatesOfCity(String city) {
-        String url = "https://api.api-ninjas.com/v1/geocoding?city=London&country="+city;
+        String url = "https://api.api-ninjas.com/v1/geocoding?city="+city;
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Api-Key", System.getenv("X-Api-Key"));
 
@@ -26,6 +26,6 @@ public class GeocodingServiceImpl implements GeocodingService {
         ResponseEntity<CityInformation[]> exchange = restTemplate.exchange(url, HttpMethod.GET, requestEntity, CityInformation[].class);
         CityInformation[] response = exchange.getBody();
         CityInformation cityInformation = response[0];
-        return new Coordinates(String.valueOf(cityInformation.getLongitude()), String.valueOf(cityInformation.getLatitude()));
+        return new Coordinates(String.valueOf(cityInformation.getLatitude()), String.valueOf(cityInformation.getLongitude()));
     }
 }

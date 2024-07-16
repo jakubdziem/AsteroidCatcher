@@ -16,8 +16,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class AsteroidController {
     public final static String ASTEROIDS_PATH = "/asteroids";
-    public final static String VISIBILITY_PATH_CITY = "/visibility/nakedEye/{city}";
-    public final static String VISIBILITY_PATH_COORDINATES = "/visibility/nakedEye/{latitude}/{longitude}";
+    public final static String VISIBILITY_PATH_CITY = "/visibility/{city}";
+    public final static String VISIBILITY_PATH_COORDINATES = "/visibility/{latitude}/{longitude}";
     public final static String VISIBILITY_PATH = "/visibility";
     private final AsteroidService asteroidService;
     private final MainService mainService;
