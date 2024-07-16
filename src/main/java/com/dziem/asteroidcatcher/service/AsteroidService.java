@@ -1,7 +1,6 @@
 package com.dziem.asteroidcatcher.service;
 
-import com.dziem.asteroidcatcher.model.Asteroid;
-import com.dziem.asteroidcatcher.model.Coordinates;
+import com.dziem.asteroidcatcher.model.nasaasteroids.Asteroid;
 
 import java.util.List;
 

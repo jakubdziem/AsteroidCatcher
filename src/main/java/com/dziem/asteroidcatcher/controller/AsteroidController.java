@@ -1,6 +1,6 @@
 package com.dziem.asteroidcatcher.controller;
 
-import com.dziem.asteroidcatcher.model.Asteroid;
+import com.dziem.asteroidcatcher.model.nasaasteroids.Asteroid;
 import com.dziem.asteroidcatcher.model.Coordinates;
 import com.dziem.asteroidcatcher.service.AsteroidService;
 import com.dziem.asteroidcatcher.service.MainService;

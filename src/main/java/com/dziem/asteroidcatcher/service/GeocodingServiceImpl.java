@@ -1,9 +1,8 @@
 package com.dziem.asteroidcatcher.service;
 
 import com.dziem.asteroidcatcher.model.Coordinates;
-import com.dziem.asteroidcatcher.model.CityInformation;
-import com.dziem.asteroidcatcher.model.GeocodingResponse;
-import lombok.AllArgsConstructor;
+import com.dziem.asteroidcatcher.model.geocoding.CityInformation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class GeocodingServiceImpl implements GeocodingService {
     private final RestTemplate restTemplate;
 

@@ -1,8 +1,7 @@
 package com.dziem.asteroidcatcher.service;
 
-import com.dziem.asteroidcatcher.model.Asteroid;
+import com.dziem.asteroidcatcher.model.nasaasteroids.Asteroid;
 import com.dziem.asteroidcatcher.model.Coordinates;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

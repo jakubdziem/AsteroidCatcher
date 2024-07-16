@@ -1,17 +1,15 @@
 package com.dziem.asteroidcatcher.service;
 
-import com.dziem.asteroidcatcher.model.Asteroid;
-import com.dziem.asteroidcatcher.model.Coordinates;
-import com.dziem.asteroidcatcher.model.NasaApiResponse;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.dziem.asteroidcatcher.model.nasaasteroids.Asteroid;
+import com.dziem.asteroidcatcher.model.nasaasteroids.NasaApiResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.List;
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AsteroidServiceImpl implements AsteroidService {
 
     private final RestTemplate restTemplate;

@@ -1,13 +1,13 @@
 package com.dziem.asteroidcatcher.service;
 
 import com.dziem.asteroidcatcher.model.Coordinates;
-import com.dziem.asteroidcatcher.model.WeatherResponse;
-import lombok.AllArgsConstructor;
+import com.dziem.asteroidcatcher.model.weather.WeatherResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class WeatherResponseServiceImpl implements WeatherResponseService {
     private final RestTemplate restTemplate;
     @Override

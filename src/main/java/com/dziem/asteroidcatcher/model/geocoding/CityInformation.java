@@ -1,4 +1,4 @@
-package com.dziem.asteroidcatcher.model;
+package com.dziem.asteroidcatcher.model.geocoding;
 
 import lombok.Data;
 
