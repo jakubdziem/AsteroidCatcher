@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface MainService {
-    Map<String, List<Asteroid>> getVisibleAsteroidsForCity(String city, double limitingMagnitude);
-    Map<String, List<Asteroid>> getVisibleAsteroidsForCoordinates(Coordinates coordinates, double limitingMagnitude);
+    Map<String, List<Asteroid>> getVisibleAsteroidsForCity(String city);
+    Map<String, List<Asteroid>> getVisibleAsteroidsForCoordinates(Coordinates coordinates);
 
 
 }

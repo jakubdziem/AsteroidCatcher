@@ -16,24 +16,26 @@ public class MainServiceImpl implements MainService {
     private final WeatherResponseService weatherResponseService;
     private final GeocodingService geocodingService;
     private final AsteroidService asteroidService;
+    private final SmallBodyDatabaseService smallBodyDatabaseService;
     @Override
-    public Map<String, List<Asteroid>> getVisibleAsteroidsForCity(String city, double limitingMagnitude) {
+    public Map<String, List<Asteroid>> getVisibleAsteroidsForCity(String city) {
         Coordinates coordinates = geocodingService.getCoordinatesOfCity(city);
         List<Asteroid> asteroids = asteroidService.getAsteroids();
         int cloudCover = weatherResponseService.getCloudCover(coordinates);
-        return getVisibleAsteroids(cloudCover, asteroids,limitingMagnitude);
+        return getVisibleAsteroids(cloudCover, asteroids, coordinates);
     }
     @Override
-    public Map<String, List<Asteroid>> getVisibleAsteroidsForCoordinates(Coordinates coordinates, double limitingMagnitude) {
+    public Map<String, List<Asteroid>> getVisibleAsteroidsForCoordinates(Coordinates coordinates) {
         List<Asteroid> asteroids = asteroidService.getAsteroids();
         int cloudCover = weatherResponseService.getCloudCover(coordinates);
-        return getVisibleAsteroids(cloudCover,asteroids, limitingMagnitude);
+        return getVisibleAsteroids(cloudCover,asteroids, coordinates);
     }
-    private static Map<String,List<Asteroid>> getVisibleAsteroids(int cloudCover, List<Asteroid> asteroids, double limitingMagnitude) {
+    private Map<String,List<Asteroid>> getVisibleAsteroids(int cloudCover, List<Asteroid> asteroids, Coordinates coordinates) {
         Map<String,List<Asteroid>> visibleAsteroids = new HashMap<>();
         List<Asteroid> nakedEye = new ArrayList<>();
         List<Asteroid> smallTelescope = new ArrayList<>();
         List<Asteroid> mediumTelescope = new ArrayList<>();
+        List<Asteroid> visibleInLocalization = new ArrayList<>();
 
         if(cloudCover > 80) {
             visibleAsteroids.put("There are too many clouds: cloudCover="+cloudCover, null);
@@ -60,10 +62,14 @@ public class MainServiceImpl implements MainService {
              * H is the absolute magnitude.
              * d is the distance from Earth to the asteroid in astronomical units (AU).
              */
+            if(smallBodyDatabaseService.isVisibleInGivenCoordinates(asteroid.getId(), coordinates)) {
+                visibleInLocalization.add(asteroid);
+            }
         }
-        visibleAsteroids.put("Naked Eye", nakedEye);
-        visibleAsteroids.put("Small Telescope", smallTelescope);
-        visibleAsteroids.put("Medium Telescope", mediumTelescope);
+//        visibleAsteroids.put("Naked Eye", nakedEye);
+//        visibleAsteroids.put("Small Telescope", smallTelescope);
+//        visibleAsteroids.put("Medium Telescope", mediumTelescope);
+        visibleAsteroids.put("Truly visible", visibleInLocalization);
         return visibleAsteroids;
     }
 

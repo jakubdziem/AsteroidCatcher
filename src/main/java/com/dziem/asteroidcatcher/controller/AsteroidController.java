@@ -21,7 +21,6 @@ public class AsteroidController {
     public final static String VISIBILITY_PATH = "/visibility";
     private final AsteroidService asteroidService;
     private final MainService mainService;
-    private final static double limitingMagnitudeNakedEye = 6.5d;
 
     @GetMapping(ASTEROIDS_PATH)
     public List<Asteroid> getAsteroids() {
@@ -29,15 +28,15 @@ public class AsteroidController {
     }
 
     @GetMapping(VISIBILITY_PATH_CITY)
-    public Map<String, List<Asteroid>> getVisibilityForCityNakedEye(@PathVariable("city") String city) {
-        return mainService.getVisibleAsteroidsForCity(city, limitingMagnitudeNakedEye);
+    public Map<String, List<Asteroid>> getVisibilityForCity(@PathVariable("city") String city) {
+        return mainService.getVisibleAsteroidsForCity(city);
     }
     @GetMapping(VISIBILITY_PATH)
-    public Map<String, List<Asteroid>> getVisibilityExampleNakedEye() {
-        return mainService.getVisibleAsteroidsForCoordinates(new Coordinates("41.71","67.31"), limitingMagnitudeNakedEye);
+    public Map<String, List<Asteroid>> getVisibilityExample() {
+        return mainService.getVisibleAsteroidsForCoordinates(new Coordinates("41.71","67.31"));
     }
     @GetMapping(VISIBILITY_PATH_COORDINATES)
-    public Map<String, List<Asteroid>> getVisibilityForCoordinatesNakedEye(@PathVariable("latitude") String latitude, @PathVariable("longitude") String longitude) {
-        return mainService.getVisibleAsteroidsForCoordinates(new Coordinates(latitude,longitude), limitingMagnitudeNakedEye);
+    public Map<String, List<Asteroid>> getVisibilityForCoordinates(@PathVariable("latitude") String latitude, @PathVariable("longitude") String longitude) {
+        return mainService.getVisibleAsteroidsForCoordinates(new Coordinates(latitude,longitude));
     }
 }
