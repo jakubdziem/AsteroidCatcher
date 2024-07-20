@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Visible Asteroids</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{asteroidcatcher}">Asteroid Catcher Api</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{asteroidslist}">List of Today's Asteroids</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{visibleasteroids}">Asteroids visible in your location</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{qa}">How does this api works?</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<form method="post" th:action="@{visibleasteroids}">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Get visible asteroids providing a city</h5>
+                    <p class="card-text">
+                        <label id="text">City:
+                            <input type="text" name="city" id="cityInput" th:value="${city}">
+                        </label>
+                    </p>
+                    <button type="submit" name="action" value="city" class="btn btn-primary mb-5 me-2">Get</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Get visible asteroids providing coordinates</h5>
+                    <p class="card-text">
+                        <label>Latitude:<input type="text" name="latitude" th:value="${latitude}"></label>
+                        <br>
+                        <label>Longitude:<input type="text" name="longitude" th:value="${longitude}"></label>
+                    </p>
+                    <button type="submit" name="action" value="coordinates" class="btn btn-primary mb-5 me-2">Get</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div th:if="${visibleAsteroids != null && !visibleAsteroids.isEmpty()}">
+    <p id="cityParam" th:text="'City: ' + ${city}">City</p>
+    <table class="table w-75 mx-auto">
+        <thead>
+        <tr>
+            <th scope="col">Time of measurement</th>
+            <th scope="col">Interval</th>
+            <th scope="col">Elevation (m.n.p.m)</th>
+            <th scope="col">Temperature</th>
+            <th scope="col">Humidity</th>
+            <th scope="col">Precipitation</th>
+            <th scope="col">Sunrise</th>
+            <th scope="col">Sunset</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" th:text="${weatherCity.time}">1</th>
+            <th th:text="${weatherCity.interval}">1</th>
+            <th th:text="${weatherCity.elevation}">1</th>
+            <th th:text="${weatherCity.temperature}">1</th>
+            <th th:text="${weatherCity.humidity}">1</th>
+            <th th:text="${weatherCity.precipitation}">1</th>
+            <th th:text="${weatherCity.sunrise}">1</th>
+            <th th:text="${weatherCity.sunset}">1</th>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table w-75 mx-auto" th:each="key : ${visibleAsteroids.keySet()}">
+        <thead>
+        <tr>
+            <th scope="col" th:text="${key}">#</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="asteroid : ${visibleAsteroids.get(key)}">
+            <th scope="row" th:text="${asteroid.id}">1</th>
+            <th th:text="${asteroid.name}">1</th>
+            <th th:text="${asteroid.nasa_jpl_url}">1</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
