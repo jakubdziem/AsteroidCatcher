@@ -66,9 +66,9 @@ public class MainServiceImpl implements MainService {
                 visibleInLocalization.add(asteroid);
             }
         }
-//        visibleAsteroids.put("Naked Eye", nakedEye);
-//        visibleAsteroids.put("Small Telescope", smallTelescope);
-//        visibleAsteroids.put("Medium Telescope", mediumTelescope);
+        visibleAsteroids.put("Naked Eye", nakedEye);
+        visibleAsteroids.put("Small Telescope", smallTelescope);
+        visibleAsteroids.put("Medium Telescope", mediumTelescope);
         visibleAsteroids.put("Truly visible", visibleInLocalization);
         return visibleAsteroids;
     }
