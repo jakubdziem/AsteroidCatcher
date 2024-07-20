@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class Weather {
+    private String cloudCover;
     private String elevation;
     private String time;
     private String interval;

@@ -6,6 +6,7 @@ import lombok.Data;
 public class CurrentExpanded {
     private String time;
     private String interval;
+    private String cloud_cover;
     private String temperature_2m;
     private String relative_humidity_2m;
     private String precipitation;

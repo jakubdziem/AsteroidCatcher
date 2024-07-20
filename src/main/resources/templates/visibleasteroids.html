@@ -58,16 +58,17 @@
     </div>
 </form>
 <div th:if="${visibleAsteroids != null && !visibleAsteroids.isEmpty()}">
-    <p id="cityParam" th:text="'City: ' + ${city}">City</p>
+    <h4 class="w-75 mx-auto" id="cityParam" th:text="'City: ' + ${city}">City</h4>
     <table class="table w-75 mx-auto">
         <thead>
         <tr>
             <th scope="col">Time of measurement</th>
-            <th scope="col">Interval</th>
+            <th scope="col">Interval [s]</th>
             <th scope="col">Elevation (m.n.p.m)</th>
-            <th scope="col">Temperature</th>
-            <th scope="col">Humidity</th>
-            <th scope="col">Precipitation</th>
+            <th scope="col">Temperature [°C]</th>
+            <th scope="col">Humidity [%]</th>
+            <th scope="col">Precipitation [mm]</th>
+            <th scope="col">Cloud cover [%]</th>
             <th scope="col">Sunrise</th>
             <th scope="col">Sunset</th>
         </tr>
@@ -80,6 +81,7 @@
             <th th:text="${weatherCity.temperature}">1</th>
             <th th:text="${weatherCity.humidity}">1</th>
             <th th:text="${weatherCity.precipitation}">1</th>
+            <th th:text="${weatherCity.cloudCover}">1</th>
             <th th:text="${weatherCity.sunrise}">1</th>
             <th th:text="${weatherCity.sunset}">1</th>
         </tr>
@@ -89,7 +91,7 @@
     <table class="table w-75 mx-auto" th:each="key : ${visibleAsteroids.keySet()}">
         <thead>
         <tr>
-            <th scope="col" th:text="${key}">#</th>
+            <th scope="col" th:if="${!visibleAsteroids.get(key).isEmpty()}" th:text="${key}">#</th>
         </tr>
         </thead>
         <tbody>

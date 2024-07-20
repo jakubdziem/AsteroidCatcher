@@ -47,6 +47,7 @@ public class PagesController {
     }
 
     @ModelAttribute("weatherCity")
+    @RequestMapping(VISIBLE_ASTEROIDS_PATH)
     public Weather getWeatherForCity(@RequestParam("city") Optional<String> opCity) {
         String city = opCity.get().equals("") ? "London" : opCity.orElse("London");
         Coordinates coordinatesOfCity = geocodingService.getCoordinatesOfCity(city);

@@ -28,12 +28,13 @@ public class WeatherResponseServiceImpl implements WeatherResponseService {
 
     @Override
     public Weather getWeather(Coordinates coordinates) {
-        String url = "https://api.open-meteo.com/v1/forecast?latitude="+coordinates.getLatitude()+"&longitude="+coordinates.getLongitude()+"&current=temperature_2m,relative_humidity_2m,is_day,precipitation&daily=sunrise,sunset";
+        String url = "https://api.open-meteo.com/v1/forecast?latitude="+coordinates.getLatitude()+"&longitude="+coordinates.getLongitude()+"&current=temperature_2m,relative_humidity_2m,is_day,precipitation,cloud_cover&daily=sunrise,sunset";
         WeatherResponseExpanded response = restTemplate.getForObject(url, WeatherResponseExpanded.class);
         return Weather.builder()
                 .elevation(response.getElevation())
                 .time(response.getCurrent().getTime())
                 .interval(response.getCurrent().getInterval())
+                .cloudCover(response.getCurrent().getCloud_cover())
                 .temperature(response.getCurrent().getTemperature_2m())
                 .humidity(response.getCurrent().getRelative_humidity_2m())
                 .precipitation(response.getCurrent().getPrecipitation())

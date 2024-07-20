@@ -44,14 +44,15 @@ public class MainServiceImpl implements MainService {
         for (Asteroid asteroid: asteroids) {
             double distanceAU = Double.parseDouble(asteroid.getClose_approach_data().get(0).getMiss_distance().getAstronomical());
             double apparentMagnitude = asteroid.getAbsolute_magnitude_h() + 5 * Math.log10(distanceAU) - 5;
-            if(apparentMagnitude <= 6.5d) {
-                nakedEye.add(asteroid);
-            } //magnitude defines the brightness of the asteroid
-            else if(apparentMagnitude <= 12d) {
-                smallTelescope.add(asteroid);
-            }
-            else if(apparentMagnitude <= 14d) {
-                mediumTelescope.add(asteroid);
+            if(smallBodyDatabaseService.isVisibleInGivenCoordinates(asteroid.getId(), coordinates)) {
+                if (apparentMagnitude <= 6.5d) {
+                    nakedEye.add(asteroid);
+                } //magnitude defines the brightness of the asteroid
+                else if (apparentMagnitude <= 12d) {
+                    smallTelescope.add(asteroid);
+                } else if (apparentMagnitude <= 14d) {
+                    mediumTelescope.add(asteroid);
+                }
             }
             /*
              * Apparent Magnitude Calculation
@@ -62,14 +63,14 @@ public class MainServiceImpl implements MainService {
              * H is the absolute magnitude.
              * d is the distance from Earth to the asteroid in astronomical units (AU).
              */
-            if(smallBodyDatabaseService.isVisibleInGivenCoordinates(asteroid.getId(), coordinates)) {
-                visibleInLocalization.add(asteroid);
-            }
+//            if(smallBodyDatabaseService.isVisibleInGivenCoordinates(asteroid.getId(), coordinates)) {
+//                visibleInLocalization.add(asteroid);
+//            }
         }
         visibleAsteroids.put("Naked Eye", nakedEye);
         visibleAsteroids.put("Small Telescope", smallTelescope);
         visibleAsteroids.put("Medium Telescope", mediumTelescope);
-        visibleAsteroids.put("Truly visible", visibleInLocalization);
+//        visibleAsteroids.put("Truly visible", visibleInLocalization);
         return visibleAsteroids;
     }
 
