@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{asteroidslist}">List of Today's Asteroids</a>
+                    <a class="nav-link" th:href="@{asteroidslist}">Daily Asteroid List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" th:href="@{visibleasteroids}">Asteroids visible in your location</a>
@@ -57,9 +57,9 @@
         </div>
     </div>
 </form>
-<div th:if="${visibleAsteroids != null && !visibleAsteroids.isEmpty()}">
-    <h4 class="w-75 mx-auto" id="cityParam" th:text="'City: ' + ${city}">City</h4>
-    <table class="table w-75 mx-auto">
+<div>
+    <h4 class="w-75 mx-auto" id="cityParam" th:text="'City: ' + ${city==null ? 'Not provided' : city}">City</h4>
+    <table class="table w-75 mx-auto" th:if="${(city != null and city.length() > 0) or (latitude != null and longitude != null)}">
         <thead>
         <tr>
             <th scope="col">Time of measurement</th>
@@ -87,11 +87,11 @@
         </tr>
         </tbody>
     </table>
-
+<div th:if="${!#maps.isEmpty(visibleAsteroids)}">
     <table class="table w-75 mx-auto" th:each="key : ${visibleAsteroids.keySet()}">
         <thead>
         <tr>
-            <th scope="col" th:if="${!visibleAsteroids.get(key).isEmpty()}" th:text="${key}">#</th>
+            <th scope="col" th:text="${key}">#</th>
         </tr>
         </thead>
         <tbody>
@@ -102,6 +102,7 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>
 </body>
 </html>
