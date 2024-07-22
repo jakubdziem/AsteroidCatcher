@@ -2,7 +2,6 @@ package com.dziem.asteroidcatcher.controller;
 
 import com.dziem.asteroidcatcher.model.Coordinates;
 import com.dziem.asteroidcatcher.model.nasaasteroids.Asteroid;
-import com.dziem.asteroidcatcher.model.weather.Current;
 import com.dziem.asteroidcatcher.model.weather.Weather;
 import com.dziem.asteroidcatcher.service.AsteroidService;
 import com.dziem.asteroidcatcher.service.GeocodingService;
@@ -25,18 +24,28 @@ public class PagesController {
     private final WeatherResponseService weatherResponseService;
     private final GeocodingService geocodingService;
     public final String VISIBLE_ASTEROIDS_PATH = "/visibleasteroids";
+    public final String ASTEROIDS_LIST_PATH = "/asteroidslist";
     @GetMapping("/asteroidcatcher")
     public String getMainPage() {
         return "asteroidcatcher";
     }
-    @GetMapping("/asteroidslist")
+    @GetMapping(ASTEROIDS_LIST_PATH)
     public String getAsteroidPage() {
         return "asteroidslist";
     }
     @ModelAttribute("asteroids")
     public List<Asteroid> getAsteroids() {
-        return asteroidService.getAsteroids();
+        return asteroidService.getAsteroidsToday();
     }
+    @PostMapping(ASTEROIDS_LIST_PATH)
+    public String getAsteroidsDate(@RequestParam("date") String date, Model model) {
+        if(!date.isEmpty())
+            model.addAttribute("asteroids", asteroidService.getAsteroids(date));
+        else
+            model.addAttribute("asteroids", asteroidService.getAsteroidsToday());
+        return "asteroidslist";
+    }
+
     @GetMapping("/qa")
     public String getQaPage() {
         return "qa";

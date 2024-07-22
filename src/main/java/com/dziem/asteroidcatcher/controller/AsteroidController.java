@@ -6,7 +6,6 @@ import com.dziem.asteroidcatcher.service.AsteroidService;
 import com.dziem.asteroidcatcher.service.MainService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +23,7 @@ public class AsteroidController {
     private final MainService mainService;
     @GetMapping(ASTEROIDS_PATH)
     public List<Asteroid> getAsteroids() {
-        return asteroidService.getAsteroids();
+        return asteroidService.getAsteroidsToday();
     }
 
     @GetMapping(VISIBILITY_PATH_CITY)

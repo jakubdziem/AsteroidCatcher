@@ -21,12 +21,29 @@
                     <a class="nav-link" th:href="@{visibleasteroids}">Asteroids visible in your location</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{qa}">How does this api works?</a>
+                    <a class="nav-link" th:href="@{qa}">How does this api work?</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<form method="post">
+        <div class="col-sm-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Get visible asteroids in specified day</h5>
+                    <p class="card-text">
+                        <label id="text">Date:
+                            <input type="date" name="date" id="dateInput">
+                        </label>
+                    </p>
+                    <button type="submit" name="action" value="date" class="btn btn-primary mb-5 me-2">Get</button>
+                </div>
+            </div>
+        </div>
+</form>
+
 <table class="table w-75 mx-auto">
     <thead>
     <tr>
@@ -39,7 +56,7 @@
     <tr th:each="asteroid : ${asteroids}">
         <th scope="row" th:text="${asteroid.id}">1</th>
         <td th:text="${asteroid.name}">Mark</td>
-        <td th:text="${asteroid.nasa_jpl_url}">Otto</td>
+        <td><a th:text="${asteroid.nasa_jpl_url}" th:href="${asteroid.nasa_jpl_url}"></a></td>
     </tr>
     </tbody>
 </table>

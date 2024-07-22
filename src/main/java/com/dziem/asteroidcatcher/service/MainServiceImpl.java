@@ -20,13 +20,13 @@ public class MainServiceImpl implements MainService {
     @Override
     public Map<String, List<Asteroid>> getVisibleAsteroidsForCity(String city) {
         Coordinates coordinates = geocodingService.getCoordinatesOfCity(city);
-        List<Asteroid> asteroids = asteroidService.getAsteroids();
+        List<Asteroid> asteroids = asteroidService.getAsteroidsToday();
         int cloudCover = weatherResponseService.getCloudCover(coordinates);
         return getVisibleAsteroids(cloudCover, asteroids, coordinates);
     }
     @Override
     public Map<String, List<Asteroid>> getVisibleAsteroidsForCoordinates(Coordinates coordinates) {
-        List<Asteroid> asteroids = asteroidService.getAsteroids();
+        List<Asteroid> asteroids = asteroidService.getAsteroidsToday();
         int cloudCover = weatherResponseService.getCloudCover(coordinates);
         return getVisibleAsteroids(cloudCover,asteroids, coordinates);
     }
@@ -35,8 +35,6 @@ public class MainServiceImpl implements MainService {
         List<Asteroid> nakedEye = new ArrayList<>();
         List<Asteroid> smallTelescope = new ArrayList<>();
         List<Asteroid> mediumTelescope = new ArrayList<>();
-        List<Asteroid> visibleInLocalization = new ArrayList<>();
-
         if(cloudCover > 80) {
             visibleAsteroids.put("There are too many clouds: cloudCover="+cloudCover, null);
             return visibleAsteroids;

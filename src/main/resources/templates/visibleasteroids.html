@@ -21,7 +21,7 @@
                     <a class="nav-link active" th:href="@{visibleasteroids}">Asteroids visible in your location</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{qa}">How does this api works?</a>
+                    <a class="nav-link" th:href="@{qa}">How does this api work?</a>
                 </li>
             </ul>
         </div>
@@ -98,7 +98,7 @@
         <tr th:each="asteroid : ${visibleAsteroids.get(key)}">
             <th scope="row" th:text="${asteroid.id}">1</th>
             <th th:text="${asteroid.name}">1</th>
-            <th th:text="${asteroid.nasa_jpl_url}">1</th>
+            <th><a th:text="${asteroid.nasa_jpl_url}" th:href="${asteroid.nasa_jpl_url}"></a></th>
         </tr>
         </tbody>
     </table>
