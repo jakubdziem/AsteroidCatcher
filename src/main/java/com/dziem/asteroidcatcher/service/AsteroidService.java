@@ -7,4 +7,5 @@ import java.util.List;
 public interface AsteroidService {
     List<Asteroid> getAsteroidsToday();
     List<Asteroid> getAsteroids(String day);
+
 }

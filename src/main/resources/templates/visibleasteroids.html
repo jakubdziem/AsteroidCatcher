@@ -62,7 +62,7 @@
     <table class="table w-75 mx-auto" th:if="${(city != null and city.length() > 0) or (latitude != null and longitude != null)}">
         <thead>
         <tr>
-            <th scope="col">Time of measurement</th>
+            <th scope="col">Last time of measurement [UTC0]</th>
             <th scope="col">Interval [s]</th>
             <th scope="col">Elevation (m.n.p.m)</th>
             <th scope="col">Temperature [°C]</th>
@@ -104,5 +104,6 @@
     </table>
 </div>
 </div>
+
 </body>
 </html>

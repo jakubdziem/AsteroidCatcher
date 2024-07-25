@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
 @Service
 @RequiredArgsConstructor
 public class WeatherResponseServiceImpl implements WeatherResponseService {
@@ -28,19 +29,24 @@ public class WeatherResponseServiceImpl implements WeatherResponseService {
 
     @Override
     public Weather getWeather(Coordinates coordinates) {
-        String url = "https://api.open-meteo.com/v1/forecast?latitude="+coordinates.getLatitude()+"&longitude="+coordinates.getLongitude()+"&current=temperature_2m,relative_humidity_2m,is_day,precipitation,cloud_cover&daily=sunrise,sunset";
+        String url = "https://api.open-meteo.com/v1/forecast?latitude="+coordinates.getLatitude()+"&longitude="+coordinates.getLongitude()+"&current=temperature_2m,relative_humidity_2m,is_day,precipitation,cloud_cover&daily=sunrise,sunset&timezone=auto";
         WeatherResponseExpanded response = restTemplate.getForObject(url, WeatherResponseExpanded.class);
+
+
+        String sunrise = response.getDaily().getSunrise()[0];
+        sunrise = sunrise.substring(sunrise.indexOf('T')+1);
+        String sunset = response.getDaily().getSunset()[0];
+        sunset = sunset.substring(sunset.indexOf('T')+1);
         return Weather.builder()
-                .elevation(response.getElevation())
                 .time(response.getCurrent().getTime())
                 .interval(response.getCurrent().getInterval())
-                .cloudCover(response.getCurrent().getCloud_cover())
+                .elevation(response.getElevation())
                 .temperature(response.getCurrent().getTemperature_2m())
                 .humidity(response.getCurrent().getRelative_humidity_2m())
                 .precipitation(response.getCurrent().getPrecipitation())
-                .sunrise(response.getDaily().getSunrise()[0])
-                .sunset(response.getDaily().getSunset()[0])
+                .cloudCover(response.getCurrent().getCloud_cover())
+                .sunrise(sunrise)
+                .sunset(sunset)
                 .build();
     }
-
 }
