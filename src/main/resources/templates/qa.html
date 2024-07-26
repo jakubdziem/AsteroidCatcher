@@ -243,25 +243,26 @@
             </li>
             <li>
                 <strong id = "wfapi">Weather Forecast API</strong><br>
-                <strong>Base URL:</strong> <a href="https://api.weather.com">https://api.weather.com</a><br>
+                <strong>Base URL:</strong> <a href="https://open-meteo.com/en/docs">https://api.weather.com</a><br>
                 <strong>Description:</strong> Provides weather data including cloud cover, which impacts asteroid visibility.<br>
                 <strong>Key Endpoints:</strong>
                 <ul>
                     <li><strong>Cloud Cover Endpoint:</strong> Retrieves current cloud cover data for given coordinates.</li>
                 </ul>
                 <strong>Example Request:</strong><br>
-                <code>GET /v3/wx/conditions/current?apiKey=YOUR_API_KEY&language=en-US&format=json</code>
+                <code>GET https://api.open-meteo.com/v1/forecast?latitude="provide latitude here"+&longitude="provide longitude here"&current=temperature_2m,relative_humidity_2m,is_day,precipitation,cloud_cover&daily=sunrise,sunset&timezone=auto</code>
             </li>
             <li>
                 <strong id = "geocoding">Geocoding API</strong><br>
-                <strong>Base URL:</strong> <a href="https://api.geocoding.com">https://api.geocoding.com</a><br>
+                <strong>Base URL:</strong> <a href="https://api-ninjas.com/api/geocoding">https://api.geocoding.com</a><br>
                 <strong>Description:</strong> Converts city names to geographic coordinates (latitude and longitude) needed for visibility calculations.<br>
                 <strong>Key Endpoints:</strong>
                 <ul>
                     <li><strong>Geocode Endpoint:</strong> Retrieves geographic coordinates for a given city name.</li>
                 </ul>
                 <strong>Example Request:</strong><br>
-                <code>GET /geocode/json?address=CITY_NAME&key=YOUR_API_KEY</code>
+                <code>GET https://api.api-ninjas.com/v1/geocoding?city=</code>
+                <code>And add X-Api-Key to the header</code>
             </li>
         </ol>
         <h4 id="technologies">Technologies used</h4>
