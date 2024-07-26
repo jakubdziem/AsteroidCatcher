@@ -1,7 +1,6 @@
 
 main {
   display: flex;
-  flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -21,20 +20,33 @@ main {
   z-index: 1000; /* Ensure it's above other content */
 }
 #side-navbar {
+  width: 250px;
   position: fixed;
   top: 56px; /* Height of the top navbar */
   left: 0;
   height: calc(100vh - 56px);
-  width: 250px;
   background: #f8f9fa;
   overflow-y: auto;
   z-index: 999;
 }
 #article {
-  margin-left: 260px; /* Width of the side navbar */
   margin-top: 56px;   /* Height of the top navbar */
   padding: 20px;
+  margin-left: 260px;
 }
+@media only screen and (max-width: 1150px) {
+  #article {
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    font-size: small;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    flex-wrap: nowrap;
+  }
+}
+
 
 
 
