@@ -42,6 +42,6 @@ public class AsteroidServiceImpl implements AsteroidService {
         return new Result(startDate, response);
     }
 
-    private record Result(String startDate, NasaApiResponse response) {
+    public record Result(String startDate, NasaApiResponse response) {
     }
 }
