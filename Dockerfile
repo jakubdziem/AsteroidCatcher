@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./mvnw clean package -DskipTests
+RUN chmod +x ./mvnw
+
+RUN mvn clean package -DskipTests
 
 RUN cp target/asteroidcatcher-0.0.1-SNAPSHOT.jar app.jar
 
