@@ -30,9 +30,14 @@ main {
   z-index: 999;
 }
 #article {
-  margin-top: 56px;   /* Height of the top navbar */
+  margin-top: 56px; /* Height of the top navbar */
+  margin-left: 260px; /* Matches the width of the side navbar */
   padding: 20px;
-  margin-left: 260px;
+  text-align: justify;
+  width: calc(100% - 260px); /* Dynamically set width based on the remaining space */
+  overflow-wrap: break-word; /* Ensure text breaks into new lines if too long */
+  word-wrap: break-word; /* For older browsers */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 @media only screen and (max-width: 1150px) {
   #article {
@@ -119,3 +124,19 @@ main {
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+@media only screen and (max-width: 1150px) {
+  #article {
+    margin-left: 0; /* Remove left margin */
+    width: 100%; /* Full width for small screens */
+    font-size: small;
+  }
+  #side-navbar {
+    position: relative; /* Make it scroll with the content */
+    width: 100%; /* Take full width on small screens */
+    height: auto; /* Adjust height dynamically */
+  }
+  main {
+    flex-direction: column; /* Stack the side navbar and article vertically */
+  }
+}

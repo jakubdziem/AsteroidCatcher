@@ -133,7 +133,7 @@
                 <strong>Description:</strong> Retrieves a list of asteroids that are observable today.<br>
                 <strong>Response:</strong> A list of Asteroid objects, each recodesenting an asteroid that can be observed today.<br>
                 <strong>Example Request:</strong><br>
-                <code>GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroids</code>
+                <code>GET https://asteroidcatcher.onrender.com/asteroids</code>
             </li>
             <li>
                 <strong>Get Asteroids for a Specific Date</strong><br>
@@ -144,7 +144,7 @@
                 date (String): The date in yyyy-MM-dd format for which the asteroids' data is being queried.<br>
                 <strong>Response:</strong> A list of Asteroid objects that can be observed on the specified date.<br>
                 <strong>Example Request:</strong><br>
-                <code>GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroids/2024-07-25</code>
+                <code>GET https://asteroidcatcher.onrender.com/asteroids/2024-07-25</code>
 
                 <div style="margin-top: 15px;">
                     <h5>Summary of Asteroids Close Approaching Earth on July 25, 2024</h5>
@@ -178,7 +178,7 @@
                 city (String): The name of the city for which the visibility of asteroids is being queried.<br>
                 <strong>Response:</strong> A map with string keys and values as lists of Asteroid objects visible from the specified city.<br>
                 <strong>Example Request:</strong><br>
-                <code>GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility/Jakarta</code>
+                <code>GET https://asteroidcatcher.onrender.com/visibility/Jakarta</code>
             </li>
             <li>
                 <strong>Get Asteroids Visible from Specific Coordinates</strong><br>
@@ -190,7 +190,7 @@
                 longitude (String): The longitude coordinate.<br>
                 <strong>Response:</strong> A map with string keys and values as lists of Asteroid objects visible from the specified coordinates.<br>
                 <strong>Example Request:</strong><br>
-                <code>GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility/41.71/67.31</code>
+                <code>GET https://asteroidcatcher.onrender.com/visibility/41.71/67.31</code>
             </li>
             <li>
                 <strong>Get Example Visibility of Asteroids (Hardcoded Coordinates)</strong><br>
@@ -199,7 +199,7 @@
                 <strong>Description:</strong> Retrieves a map where the key is a string (codesumably a date or time range), and the value is a list of Asteroid objects visible from a hardcoded set of coordinates (latitude 41.71, longitude 67.31).<br>
                 <strong>Response:</strong> A map with string keys and values as lists of Asteroid objects visible from the hardcoded coordinates.<br>
                 <strong>Example Request:</strong><br>
-                <code>GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility</code>
+                <code>GET https://asteroidcatcher.onrender.com/visibility</code>
             </li>
         </ol>
         <h4 id="servicesinteraction">Services Interaction</h4>
@@ -250,7 +250,7 @@
                     <li><strong>Cloud Cover Endpoint:</strong> Retrieves current cloud cover data for given coordinates.</li>
                 </ul>
                 <strong>Example Request:</strong><br>
-                <code>GET https://api.open-meteo.com/v1/forecast?latitude=YOUR_LATTITUDE&longitudeYOUR_LONGITUDE&current=temperature_2m,relative_humidity_2m,is_day,precipitation,cloud_cover&daily=sunrise,sunset&timezone=auto</code>
+                <code>https://api.open-meteo.com/v1/forecast?latitude=YOUR_LATTITUDE&longitudeYOUR_LONGITUDE&current=temperature_2m,relative_humidity_2m,is_day,precipitation,cloud_cover&daily=sunrise,sunset&timezone=auto</code>
             </li>
             <li>
                 <strong id = "geocoding">Geocoding API</strong><br>
