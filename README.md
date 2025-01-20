@@ -24,7 +24,7 @@ Asteroid Catcher is an API that provides daily information on asteroids passing 
 ## Usage
 ### Website:
 ```bash
-https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroidcatcher
+https://asteroidcatcher.onrender.com/asteroidcatcher
 ```
 ### Operations on API:
 <ul>
@@ -32,7 +32,7 @@ https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroidcatcher
 Example request: 
   
 ```bash
-GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroids
+GET https://asteroidcatcher.onrender.com/asteroids
 ```
 
 </li>
@@ -40,7 +40,7 @@ GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroids
 Example request: 
   
 ```bash
-GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroids/2024-07-25
+GET https://asteroidcatcher.onrender.com/asteroids/2024-07-25
 ```
 
 </li>
@@ -48,7 +48,7 @@ GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/asteroids/2024-07-25
 Example request: 
   
 ```bash
-GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility/Jakarta
+GET https://asteroidcatcher.onrender.com/visibility/Jakarta
 ```
 
 </li>
@@ -57,7 +57,7 @@ Get Asteroids Visible from Specific Coordinates:
 Example request: 
   
 ```bash
-GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility/41.71/67.31
+GET https://asteroidcatcher.onrender.com/visibility/41.71/67.31
 ```
 
 </li>
@@ -65,7 +65,8 @@ GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility/41.71/67.31
 Example request:
   
 ```bash
-GET https://asteroidcatcher-db7fb1c99a25.herokuapp.com/visibility
+GET https://asteroidcatcher.onrender.com/visibility
 ```
 
 </li>
+</ul>
